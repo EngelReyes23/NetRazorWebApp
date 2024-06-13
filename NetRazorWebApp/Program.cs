@@ -1,4 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using NetRazorWebApp.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// SQL Server connection configuration
+builder.Services.AddDbContext<ApplicationDBContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionSQLlocalDB"));
+});
 
 // Add services to the container.
 builder.Services.AddRazorPages();
