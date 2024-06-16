@@ -7,7 +7,7 @@ Welcome to NetRazorWebApp! This is a project that aims to showcase the power and
 
 To get started with NetRazorWebApp, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/your-username/NetRazorWebApp.git`
+1. Clone the repository: `git clone https://github.com/EngelReyes23/NetRazorWebApp.git`
 2. Open the solution in Visual Studio.
 3. Build the solution to restore NuGet packages.
 4. Run the application.
