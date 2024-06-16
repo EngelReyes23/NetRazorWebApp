@@ -18,7 +18,7 @@ namespace NetRazorWebApp.Pages.Courses
         public Course Course { get; set; }
 
         [TempData]
-        public string Mensaje { get; set; }
+        public string Message { get; set; }
 
         public async Task OnGet(int id)
         {
@@ -36,7 +36,7 @@ namespace NetRazorWebApp.Pages.Courses
                 courseFromDb.Price = Course.Price;
 
                 await _db.SaveChangesAsync();
-                Mensaje = "Curso editado correctamente";
+                Message = "Edited course correctly";
                 return RedirectToPage("Index");
             }
 
