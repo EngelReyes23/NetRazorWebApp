@@ -11,57 +11,62 @@
     <a asp-page="Create" class="btn btn-primary">Create New</a>
   </div>
 
-  @if (Model.Courses.Count() > 0)
-  {
-    <table class="table">
-      <thead>
-        <tr>
-          <th>
-            @Html.DisplayNameFor(model => model.Courses.First().CourseName)
-          </th>
-          <th>
-            @Html.DisplayNameFor(model => model.Courses.First().Price)
-          </th>
-          <th>
-            @Html.DisplayNameFor(model => model.Courses.First().QuantityClasses)
-          </th>
-          <th>
-            @Html.DisplayNameFor(model => model.Courses.First().DateCreated)
-          </th>
-          <th>
-            Actions
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach (var item in Model.Courses)
-        {
+  <form method="post">
+    @if (Model.Courses.Count() > 0)
+    {
+      <table class="table">
+        <thead>
           <tr>
-            <td>
-              @Html.DisplayFor(modelItem => item.CourseName)
-            </td>
-            <td>
-              @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-              @Html.DisplayFor(modelItem => item.QuantityClasses)
-            </td>
-            <td>
-              @Html.DisplayFor(modelItem => item.DateCreated)
-            <td>
-              <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a>
-              <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
-            </td>
+            <th>
+              @Html.DisplayNameFor(model => model.Courses.First().CourseName)
+            </th>
+            <th>
+              @Html.DisplayNameFor(model => model.Courses.First().Price)
+            </th>
+            <th>
+              @Html.DisplayNameFor(model => model.Courses.First().QuantityClasses)
+            </th>
+            <th>
+              @Html.DisplayNameFor(model => model.Courses.First().DateCreated)
+            </th>
+            <th>
+              Actions
+            </th>
           </tr>
-        }
-      </tbody>
-    </table>
-  }
-  else
-  {
-    <div class="card-body">
-      <p>No courses found.</p>
-    </div>
-  }
+        </thead>
+        <tbody>
+          @foreach (var item in Model.Courses)
+          {
+            <tr>
+              <td>
+                @Html.DisplayFor(modelItem => item.CourseName)
+              </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.Price)
+              </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.QuantityClasses)
+              </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.DateCreated)
+              <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a>
+                <button asp-page-handler="Delete" asp-route-id="@item.Id"
+                  onclick="return confirm('Are you sure to delete the course? ')"
+                  class="btn btn-danger btn-sm">Delete</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+
+    }
+    else
+    {
+      <div class="card-body">
+        <p>No courses found.</p>
+      </div>
+    }
+  </form>
 
 </div>

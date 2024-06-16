@@ -15,11 +15,30 @@ namespace NetRazorWebApp.Pages.Courses
             _db = db;
         }
 
+        [TempData]
+        public string Message { get; set; }
+
         public IEnumerable<Course> Courses { get; set; }
 
         public async Task OnGet()
         {
             Courses = await _db.Course.ToListAsync();
+        }
+
+        public async Task<IActionResult> OnPostDelete(int id)
+        {
+            var course = await _db.Course.FindAsync(id);
+            if (course == null)
+            {
+                return NotFound();
+            }
+
+            _db.Course.Remove(course);
+            await _db.SaveChangesAsync();
+
+            Message = "Deleted course correctly";
+
+            return RedirectToPage("Index");
         }
     }
 }
